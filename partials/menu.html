@@ -1,5 +1,5 @@
 <div ng-controller="MenuController" class="menu-content">
-    <div class="logo"><img ng-src="{{logo}}"></div>
+    <div class="logo"><img ng-src="assets/images/logo.png"></div>
     <div class="menu-item-container">
         <ul id="menu-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
             <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}" repeat-finish="menuFinish();">

@@ -6,6 +6,15 @@ angular.module('app.welcome', [])
         activity.initialize($scope);
         activity.isMenu(true);
         $scope.password = 0;
+        var hideVideo = function () {
+            $(".wel-top").hide();
+            $(".wel-bot").hide();
+        };
+        var showVideo = function () {
+            $(".wel-top").show();
+            $(".wel-bot").show();
+        }
+        setTimeout(hideVideo,5000);
         activity.loadI18NResource(function (res) {
             var i18nText;
             if(ResourceManager.getLocale()){
@@ -18,11 +27,11 @@ angular.module('app.welcome', [])
             }
             $scope.guestNameText = i18nText.welcome.guestName;
             $scope.guestName = ResourceManager.getI18NResource().getString("guest_name");
-            $scope.welcomeText = ResourceManager.getI18NResource().getString("welcome_text");
+            $scope.welcomeText = i18nText.welcome.welcome_text;
             $scope.press1 = i18nText.welcome.press1;
             $scope.press2 = i18nText.welcome.press2;
             $scope.logo = ResourceManager.getConfigurations().logoUrl();
-            $scope.poster = ResourceManager.getConfigurations().welcomeBgImageUrl();
+            $scope.poster = "assets/images/bg-model.png";
 
 
             // var fileSystemObj = new FileSystem();
@@ -49,6 +58,8 @@ angular.module('app.welcome', [])
             languageIndex = 0;
 
         activity.onKeyDown(function (keyCode) {
+            showVideo();
+            setTimeout(hideVideo,5000);
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
                 case COMMON_KEYS.KEY_RIGHT:
